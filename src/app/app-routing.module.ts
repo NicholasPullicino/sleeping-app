@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'sleep-timer',
     loadChildren: () => import('./sleep-timer/sleep-timer.module').then( m => m.SleepTimerPageModule)
+  },
+  {
+    path: 'journal-entry',
+    loadChildren: () => import('./journal-entry/journal-entry.module').then( m => m.JournalEntryPageModule)
   }
 ];
 

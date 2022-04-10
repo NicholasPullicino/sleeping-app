@@ -13,4 +13,13 @@
       <ion-title size="large">Journal</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-row class="ion-justify-content-center">
+    <h1>{{ time | async }}</h1>
+  </ion-row>
 </ion-content>
+
+<ion-footer>
+  <ion-button *ngIf="state === 'stop'" expand="block" color="primary" (click)="startTimer(startDuration)">Start</ion-button>
+  <ion-button *ngIf="state === 'start'" expand="block" color="danger" (click)="stopTimer()">Stop</ion-button>
+</ion-footer>
