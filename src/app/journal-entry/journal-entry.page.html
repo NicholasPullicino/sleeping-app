@@ -17,11 +17,11 @@
   <form [formGroup]="entryData" (ngSubmit)="onSubmit()">
     <ion-list>
       <ion-item>
-        <ion-label>Entry Title</ion-label>
+        <ion-label position="floating">Entry Title</ion-label>
         <ion-input formControlName="title"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Entry Content</ion-label>
+        <ion-label position="floating">Entry Content</ion-label>
         <ion-input formControlName="content"></ion-input>
       </ion-item>
     </ion-list>
