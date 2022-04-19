@@ -18,18 +18,18 @@
     <ion-label>Today <p>{{today | date:'fullDate'}}</p></ion-label>
   </ion-item>
 
-  <ion-card *ngFor="let item of entryList; let i = index">
+  <ion-card *ngIf="entryHistory.getHistory().length > 0">
     <ion-card-header>
       <ion-card-subtitle>
-        {{item.entryTitle}}
+        {{entry.entryTitle}}
       </ion-card-subtitle>
       <ion-item>
-        <ion-label>{{item.entryContent}}</ion-label>
+        <ion-label>{{entry.entryContent}}</ion-label>
       </ion-item>
     </ion-card-header>
 
     <ion-row>
-      <ion-item button (click)="removeEntry(i)">
+      <ion-item button>
         <ion-icon name="trash"></ion-icon>
         <p>Delete</p>
       </ion-item>

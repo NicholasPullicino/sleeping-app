@@ -1,0 +1,51 @@
+import { Injectable } from '@angular/core';
+import { StorageService } from './storage.service';
+import { HistoryItem } from '../structs/history'
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HistoryService {
+
+  private static readonly storageKey = 'history';
+
+  private history: HistoryItem[] = [];
+
+  constructor(private storage: StorageService) { this.init(); }
+
+  /**
+   * Adds an item to the history
+   * 
+   * @param item The new item to add
+   */
+    public add(item: HistoryItem): void{
+    this.history.push(item);
+    this.storage.set(HistoryService.storageKey, this.history);
+  }
+
+  /**
+   * Clears the history.
+   */
+  public clear(): void{
+    this.history = [];
+    this.storage.remove(HistoryService.storageKey);
+  }
+
+  /**
+   * Returns the history list
+   * 
+   * @returns The history list
+   */
+  public getHistory(): HistoryItem[]{
+    return this.history;
+  }
+
+  /**
+   * Retrieves the history from storage.
+   */
+  private async init(){
+
+    //Returns an empty array if no data exists.
+    this.history = await this.storage.get(HistoryService.storageKey) || [];
+  }
+}
