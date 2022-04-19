@@ -14,5 +14,28 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-button routerLink="/journal-entry" expand="full">New Entry</ion-button>
+  <ion-item lines="none">
+    <ion-label>Today <p>{{today | date:'fullDate'}}</p></ion-label>
+  </ion-item>
+
+  <ion-card *ngFor="let item of entryList; let i = index">
+    <ion-card-header>
+      <ion-card-subtitle>
+        {{item.entryTitle}}
+      </ion-card-subtitle>
+      <ion-item>
+        <ion-label>{{item.entryContent}}</ion-label>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-row>
+      <ion-item button (click)="removeEntry(i)">
+        <ion-icon name="trash"></ion-icon>
+        <p>Delete</p>
+      </ion-item>
+    </ion-row>
+  </ion-card>
+
+
+  <ion-button (click)="addTask()" expand="full">New Entry</ion-button>
 </ion-content>

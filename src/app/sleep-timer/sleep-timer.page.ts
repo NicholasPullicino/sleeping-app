@@ -13,7 +13,7 @@ export class SleepTimerPage implements OnInit {
   timer: number;
   interval;
 
-  startDuration = 5;
+  startDuration = 1;
 
   state: 'start' | 'stop' = 'stop';
 

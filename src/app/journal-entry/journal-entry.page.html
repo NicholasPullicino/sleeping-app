@@ -3,29 +3,27 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Journal Entry</ion-title>
+    <ion-title>Add New Entry</ion-title>
+    <ion-icon name="close" slot="end" size="large" (click)="dismiss()"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Journal Entry</ion-title>
+      <ion-title size="large">Add New Entry</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="entryData" (ngSubmit)="onSubmit()">
-    <ion-list>
-      <ion-item>
-        <ion-label>Entry Title</ion-label>
-        <ion-input formControlName="title"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Entry Content</ion-label>
-        <ion-input formControlName="content"></ion-input>
-      </ion-item>
-    </ion-list>
+  <ion-card>
+    <ion-item>
+      <ion-textarea [(ngModel)]="entryTitle" placeholder="Your title here"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-textarea [(ngModel)]="entryContent" placeholder="Your entry here"></ion-textarea>
+    </ion-item>
 
-    <ion-button type="submit" expand="block">Add Entry</ion-button>
-  </form>
+    <ion-button class="ion-margin" expand="block" (click)="addEntry()">Add Entry</ion-button>
+  </ion-card>
+
 </ion-content>

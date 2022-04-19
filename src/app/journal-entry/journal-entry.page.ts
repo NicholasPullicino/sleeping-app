@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
+import { JournalService } from '../services/journal.service';
 
 @Component({
   selector: 'app-journal-entry',
@@ -8,20 +10,22 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class JournalEntryPage implements OnInit {
 
-  public entryData: FormGroup;
+  entryTitle
+  entryContent
 
-  constructor() { }
+  entryObject
+  constructor(public modalCtrl:ModalController, private journalService: JournalService) { }
 
   ngOnInit() {
-
-    this.entryData = new FormGroup({
-      title: new FormControl(),
-      content: new FormControl()
-    });
-
   }
 
-  onSubmit(){
-    console.log(this.entryData.value)
+  async dismiss(){
+    await this.modalCtrl.dismiss(this.entryObject)
+  }
+
+  addEntry(){
+    this.entryObject = ({entryTitle:this.entryTitle, entryContent:this.entryContent})
+    this.journalService.set(this.entryTitle, this.entryContent);
+    this.dismiss()
   }
 }

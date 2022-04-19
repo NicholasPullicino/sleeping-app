@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [class]="getColorName()">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Themes</ion-title>
@@ -17,13 +17,13 @@
   <ion-grid>
     <ion-row>
       <ion-col id="red">
-        <div>1 of 3</div>
+        <ion-button color="danger" (click)="changeColor(1)"></ion-button>
       </ion-col>
       <ion-col id="green">
-        <div>2 of 3</div>
+        <ion-button color="success" (click)="changeColor(2)"></ion-button>
       </ion-col>
       <ion-col id="purple">
-        <div>3 of 3</div>
+        <ion-button color="warning" (click)="changeColor(3)"></ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

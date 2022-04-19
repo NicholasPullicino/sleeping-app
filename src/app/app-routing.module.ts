@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -34,7 +34,7 @@ const routes: Routes = [
   {
     path: 'journal-entry',
     loadChildren: () => import('./journal-entry/journal-entry.module').then( m => m.JournalEntryPageModule)
-  }
+  },
 ];
 
 @NgModule({
