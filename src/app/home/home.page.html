@@ -19,11 +19,6 @@
   class="ion-padding"
   [ngClass]="{ 'error': !name && !surname }">
 
-    <!-- User Avatar -->
-    <ion-avatar>
-      <img src="/assets/shapes.svg" alt="">
-    </ion-avatar>
-
     <!-- User Details -->
     <div class="ion-text-center">
       <h3 *ngIf="name || surname">{{ name }} {{ surname }}</h3>

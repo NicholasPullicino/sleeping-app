@@ -23,6 +23,10 @@ export class HistoryService {
     this.storage.set(HistoryService.storageKey, this.history);
   }
 
+  removeEntry(index){
+    this.history.splice(index,1)
+  }
+
   /**
    * Clears the history.
    */
@@ -36,7 +40,12 @@ export class HistoryService {
    * 
    * @returns The history list
    */
-  public getHistory(): HistoryItem[]{
+  public getHistory(id?: number): HistoryItem | HistoryItem[]
+  {
+    if(id !== undefined){
+      return this.history[id];
+    }
+
     return this.history;
   }
 

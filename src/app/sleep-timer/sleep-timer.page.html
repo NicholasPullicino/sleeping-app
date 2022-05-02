@@ -20,6 +20,6 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button *ngIf="state === 'stop'" expand="block" color="primary" (click)="startTimer(startDuration)">Start</ion-button>
-  <ion-button *ngIf="state === 'start'" expand="block" color="danger" (click)="stopTimer()">Stop</ion-button>
+  <ion-button *ngIf="state === 'stop'" expand="block" (click)="startTimer(startDuration)">Start</ion-button>
+  <ion-button *ngIf="state === 'start'" expand="block" (click)="stopTimer()">Stop</ion-button>
 </ion-footer>

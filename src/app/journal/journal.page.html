@@ -15,13 +15,24 @@
   </ion-header>
 
   <ion-item lines="none">
-    <ion-label>Today <p>{{today | date:'fullDate'}}</p></ion-label>
+    <ion-label class="todayDate">Today <p>{{today | date:'fullDate'}}</p></ion-label>
+
+    <ion-buttons slot="end">
+      <ion-button
+      [disabled]="entryHistory.getHistory().length === 0" 
+      (click)="onClear()">Clear</ion-button>
+    </ion-buttons>
   </ion-item>
 
-  <ion-card *ngIf="entryHistory.getHistory().length > 0">
+  <div class="ion-padding ion-text-center" 
+  *ngIf="entryHistory.getHistory().length === 0">
+    <p>You don't have any entries.</p>
+  </div>
+
+  <ion-card *ngFor="let entry of entryHistory.getHistory(); let i = index">
     <ion-card-header>
       <ion-card-subtitle>
-        {{entry.entryTitle}}
+        {{entry.entryTitle}} {{ entry.entryTime | date:'dd MMM YYYY, HH:mm'}}
       </ion-card-subtitle>
       <ion-item>
         <ion-label>{{entry.entryContent}}</ion-label>
@@ -29,7 +40,7 @@
     </ion-card-header>
 
     <ion-row>
-      <ion-item button>
+      <ion-item button (click)="entryHistory.removeEntry(i)">
         <ion-icon name="trash"></ion-icon>
         <p>Delete</p>
       </ion-item>

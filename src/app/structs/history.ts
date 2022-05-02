@@ -1,6 +1,5 @@
-import { Entry } from "./journal";
-
 export interface HistoryItem{
+    entryTitle: string;
+    entryContent: string;
     entryTime: number;
-    entries: Entry[];
 }

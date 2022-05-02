@@ -4,8 +4,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { JournalEntryPage } from '../journal-entry/journal-entry.page';
 import { HistoryService } from '../services/history.service';
 import { JournalService } from '../services/journal.service';
-import { Entry } from '../structs/journal';
-
+import { HistoryItem } from '../structs/history';
 
 @Component({
   selector: 'app-journal',
@@ -13,12 +12,6 @@ import { Entry } from '../structs/journal';
   styleUrls: ['./journal.page.scss'],
 })
 export class JournalPage implements OnInit {
-
-  public currentEntryIndex = -1;
-
-  public entry: Entry
-
-  private entryTime = 0;
 
   entryList = []
   today: number = Date.now()
@@ -37,23 +30,14 @@ export class JournalPage implements OnInit {
       component: JournalEntryPage
     })
 
-    modal.onDidDismiss().then(newEntryObj =>{
-      console.log(newEntryObj.data);
-      this.entryList.push(newEntryObj.data)
-    })
-
     return await modal.present()
-  }
-
-  removeEntry(index){
-    this.entryList.splice(index,1)
   }
 
   async onClear(){
     //Create an alert
     const alert = await this.alertCtrl.create({
-      header: "Deleting History",
-      message: "Deleting your history is a permanent action and cannot be undone",
+      header: "Deleting all entries",
+      message: "Deleting your entries is a permanent action and cannot be undone",
       buttons: [
         {
         text: 'No',

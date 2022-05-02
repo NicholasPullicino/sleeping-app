@@ -1,13 +1,21 @@
+ion-content{
+    --background: #19133A;
+}
+
 ion-content.red{
-    --background: red;    
+    --background: #ac3766;    
+}
+
+ion-toolbar{
+    --background: #5A56CB;
 }
 
 ion-content.green{
-    --background: green;    
+    --background: rgb(36, 112, 36);    
 }
 
 ion-content.yellow{
-    --background: yellow;    
+    --background: rgb(196, 196, 31);    
 }
 
 ion-menu-button {
