@@ -21,18 +21,31 @@
 
     <!-- User Details -->
     <div class="ion-text-center">
+<<<<<<< HEAD
       <!-- <h3 *ngIf="name || surname">{{ name }} {{ surname }}</h3> -->
       <h3>Welcome! You have written {{ entries }} journal entries and have
         used the sleep timer {{ timer }} times!</h3>
       <!-- h3 *ngIf="!name && !surname"></h3> -->
+=======
+      <h3 *ngIf="name || surname">{{ name }} {{ surname }}</h3>
+      <h3>Welcome</h3>
+      <h3 *ngIf="!name && !surname"></h3>
+>>>>>>> c49320737fb2993bd5976f030a310190e5d726af
     </div>
 
   </div>
 
+<<<<<<< HEAD
   <!-- User Inputs
   <ion-list>
 
     Name Entry
+=======
+  <!-- User Inputs-->
+  <ion-list>
+
+    <!-- Name Entry -->
+>>>>>>> c49320737fb2993bd5976f030a310190e5d726af
     <ion-item>
       <ion-label position="floating">
         Name
@@ -42,9 +55,15 @@
       <ion-input
       [(ngModel)]="name" 
       clearInput></ion-input>
+<<<<<<< HEAD
     </ion-item> -->
 
     <!-- Surname Entry
+=======
+    </ion-item>
+
+    <!-- Surname Entry -->
+>>>>>>> c49320737fb2993bd5976f030a310190e5d726af
     <ion-item>
       <ion-label position="floating">
         Surname
@@ -56,13 +75,23 @@
       clearInput></ion-input>
     </ion-item>
 
+<<<<<<< HEAD
   </ion-list> -->
 
   <!-- <ion-footer>
+=======
+  </ion-list>
+
+  <ion-footer>
+>>>>>>> c49320737fb2993bd5976f030a310190e5d726af
     <ion-button 
     class="ion-no-margin"
     [disabled]="!name && !surname"
     expand="full"
     (click) = "saveCredentials()">Save Credentials</ion-button>
+<<<<<<< HEAD
   </ion-footer> -->
+=======
+  </ion-footer>
+>>>>>>> c49320737fb2993bd5976f030a310190e5d726af
 </ion-content>

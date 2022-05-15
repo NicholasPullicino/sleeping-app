@@ -9,8 +9,11 @@ export class HistoryService {
 
   private static readonly storageKey = 'history';
 
+<<<<<<< HEAD
   private entryLength = 0;
 
+=======
+>>>>>>> c49320737fb2993bd5976f030a310190e5d726af
   private history: HistoryItem[] = [];
 
   constructor(private storage: StorageService) { this.init(); }
@@ -59,9 +62,12 @@ export class HistoryService {
     //Returns an empty array if no data exists.
     this.history = await this.storage.get(HistoryService.storageKey) || [];
   }
+<<<<<<< HEAD
  
   public get journalLength(): number
   {
     return this.entryLength = this.history.length;
   }
+=======
+>>>>>>> c49320737fb2993bd5976f030a310190e5d726af
 }

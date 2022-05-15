@@ -21,5 +21,10 @@
 </ion-content>
 
 <ion-footer>
+<<<<<<< HEAD
   <ion-button expand="block" (click)="toggleTimer()">{{ isRunning ? 'Stop' : 'Start'}}</ion-button>
+=======
+  <ion-button *ngIf="state === 'stop'" expand="block" (click)="startTimer(startDuration)">Start</ion-button>
+  <ion-button *ngIf="state === 'start'" expand="block" (click)="stopTimer()">Stop</ion-button>
+>>>>>>> c49320737fb2993bd5976f030a310190e5d726af
 </ion-footer>
