@@ -14,5 +14,45 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-button routerLink="/journal-entry" expand="full">New Entry</ion-button>
+  <!-- Today's Date -->
+  <ion-item lines="none">
+    <ion-label class="todayDate">Today <p>{{today | date:'fullDate'}}</p></ion-label>
+
+    <ion-buttons slot="end">
+      <ion-button
+      [disabled]="entryHistory.getHistory().length === 0" 
+      (click)="onClear()">Clear</ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <!-- No Entries -->
+  <div class="ion-padding ion-text-center" 
+  *ngIf="entryHistory.getHistory().length === 0">
+    <p>You don't have any entries.</p>
+  </div>
+
+  <!-- Entry Cards -->
+  <ion-card *ngFor="let entry of entryHistory.getHistory(); let i = index">
+    <ion-card-header>
+      <ion-card-subtitle>
+        {{entry.entryTitle}} {{ entry.entryTime | date:'dd MMM YYYY, HH:mm'}}
+      </ion-card-subtitle>
+      <ion-item>
+        <ion-label>{{entry.entryContent}}</ion-label>
+      </ion-item>
+    </ion-card-header>
+
+    <!-- Delete Button -->
+    <ion-row>
+      <ion-item button (click)="entryHistory.removeEntry(i)">
+        <ion-icon name="trash"></ion-icon>
+        <p>Delete</p>
+      </ion-item>
+    </ion-row>
+  </ion-card>
+
 </ion-content>
+
+<ion-footer>
+  <ion-button (click)="addTask()" expand="full">New Entry</ion-button>
+</ion-footer>

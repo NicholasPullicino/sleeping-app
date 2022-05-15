@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button [disabled]="isRunning"></ion-menu-button>
     </ion-buttons>
     <ion-title>Sleep Timer</ion-title>
   </ion-toolbar>
@@ -15,11 +15,11 @@
   </ion-header>
 
   <ion-row class="ion-justify-content-center">
-    <h1>{{ time | async }}</h1>
+    <h1>{{ timer | time}}</h1>
   </ion-row>
+
 </ion-content>
 
 <ion-footer>
-  <ion-button *ngIf="state === 'stop'" expand="block" color="primary" (click)="startTimer(startDuration)">Start</ion-button>
-  <ion-button *ngIf="state === 'start'" expand="block" color="danger" (click)="stopTimer()">Stop</ion-button>
+  <ion-button expand="block" (click)="toggleTimer()">{{ isRunning ? 'Stop' : 'Start'}}</ion-button>
 </ion-footer>

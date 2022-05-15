@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- Back/Close buttons -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/history"></ion-back-button>
+      
+      <ion-button *ngIf="false">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title *ngIf="entryData">{{ entryData.entryTime | date:'dd MMM YYYY'}}</ion-title>
+
+    <!-- Delete button -->
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- The error message -->
+  <div class="ion-padding ion-text-center" *ngIf="!entryData">
+    This entry does not exist.
+  </div>
+
+  <ion-slides pager *ngIf="entryData">
+    <!-- Metrics Slide -->
+    <ion-slide class="metrics">
+      <ion-item>
+        <ion-label position="stacked">Entry Title</ion-label>
+        <ion-input readonly="true" value="{{ entryData.entryTitle }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Entry Content</ion-label>
+        <ion-input readonly="true" value="{{ entryData.entryContent }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Entry Creation</ion-label>
+        <ion-input readonly="true" value="{{ entryData.entryTime | date: 'HH:mm' }}"></ion-input>
+      </ion-item>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryService } from '../services/history.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  public name: string;
+  public surname: string;
+  public entries: number;
+
+  constructor(
+    private userService: UserService,
+    private entryHistory: HistoryService) { }
 
   ngOnInit() {
   }
 
+  ionViewWillEnter(): void{
+    this.entries = this.entryHistory.journalLength;
+  }
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { TimerHistoryService } from '../services/timer-history.service';
+import { TimerService } from '../services/timer.service';
+import { HistoryTimer } from '../structs/timer';
 
 @Component({
   selector: 'app-sleep-timer',
@@ -13,45 +16,56 @@ export class SleepTimerPage implements OnInit {
   timer: number;
   interval;
 
-  startDuration = 5;
+  startDuration = 1;
 
-  state: 'start' | 'stop' = 'stop';
+  isRunning: boolean;
 
-  constructor() { }
+  start = -1;
+  previousTimeStamp;
+  done = false;
+
+  constructor(
+    private TimerService: TimerService,
+    public timerHistory: TimerHistoryService) { }
 
   ngOnInit() {
   }
 
-  startTimer(duration: number){
-    this.state = 'start';
-    clearInterval(this.interval)
-    this.timer = duration * 60;
-    this.updateTimeValue();
-    this.interval = setInterval( () => {
-      this.updateTimeValue();
-    }, 1000)
-  }
-
-  stopTimer() {
-    clearInterval(this.interval);
-    this.time.next('00:00')
-    this.state = 'stop';
-  }
-
-  updateTimeValue(){
-    let minutes: any = this.timer / 60;
-    let seconds: any = this.timer % 60;
-
-    minutes = String('0' + Math.floor(minutes)).slice(-2);
-    seconds = String('0' + Math.floor(seconds)).slice(-2);
-
-    const text = minutes + ':' + seconds;
-    this.time.next(text);
-
-    --this.timer;
-
-    if(this.timer < -1){
-      this.startTimer(this.startDuration);
+  toggleTimer(){
+    this.isRunning = !this.isRunning;
+    if (this.isRunning)
+    {
+      window.requestAnimationFrame((t) => this.timerStep(this, t));
     }
+    else{
+      this.start = -1;
+      this.save()
+    }
+  }
+
+  timerStep(source, timestamp){
+    console.log(timestamp);
+    
+    if(!this.isRunning) return;
+
+    if (this.start < 0) {
+      this.start = timestamp;
+    }
+    this.timer = timestamp - this.start;
+
+
+    if(this.isRunning){
+      window.requestAnimationFrame((t) => source.timerStep(source, t));
+    }
+  }
+
+  private save(): void{
+
+    const data: HistoryTimer = {
+      endTime: this.timer,
+      timerDate: (new Date().getTime()) - this.timer
+    };
+
+    this.timerHistory.add(data);
   }
 }

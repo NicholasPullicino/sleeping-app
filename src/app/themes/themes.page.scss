@@ -1,14 +1,32 @@
+ion-content{
+    --background: #19133A;
+}
+
+ion-content.red{
+    --background: #ac3766;    
+}
+
+ion-toolbar{
+    --background: #5A56CB;
+}
+
+ion-content.green{
+    --background: rgb(36, 112, 36);    
+}
+
+ion-content.yellow{
+    --background: rgb(196, 196, 31);    
+}
+
 ion-menu-button {
     color: var(--ion-color-primary);
 }
 
 ion-grid{
-    background: var(--ion-color-primary);
     --ion-grid-column-padding: 50px;
     --ion-grid-padding: 10px;
 
     ion-col{
-        background: var(--ion-color-danger);
         text-align: center;
     }
 }
@@ -37,3 +55,4 @@ ion-grid{
 #container a {
     text-decoration: none;
 }
+

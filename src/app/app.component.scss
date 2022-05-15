@@ -1,3 +1,37 @@
+.custom{
+  --side-width: 10%;
+}
+
+ion-split-pane{
+  --background: #09051E;
+  ion-menu{
+    --background: #09051E;
+    ion-content{
+      --background: #09051E;
+    }
+  }
+}
+
+ion-list{
+  --background: #09051E;
+}
+
+ion-item{
+  --background: #09051E;
+}
+
+ion-list-header{
+  --background: #09051E;
+}
+
+ion-menu-toggle{
+  --background: #09051E;
+}
+
+ion-content{
+  --background-color: #09051E;
+}
+
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
@@ -7,10 +41,6 @@ ion-menu.md ion-content {
   --padding-end: 8px;
   --padding-top: 20px;
   --padding-bottom: 20px;
-}
-
-ion-menu.md ion-list {
-  padding: 20px 0;
 }
 
 ion-menu.md ion-note {

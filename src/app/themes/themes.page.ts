@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThemesPage implements OnInit {
 
+  private _colorChoice : number;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  changeColor(choice: number) {
+		this._colorChoice = choice;
+	}
+
+  getColorName() {
+		if (this._colorChoice == 1)
+			return "red";
+		else if (this._colorChoice == 2)
+			return "green";
+		else if (this._colorChoice == 3)
+			return "yellow";
+		
+		return "";
+	}
 }
