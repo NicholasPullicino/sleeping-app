@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoryService } from '../services/history.service';
+import { TimerHistoryService } from '../services/timer-history.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,18 +10,18 @@ import { UserService } from '../services/user.service';
 })
 export class HomePage implements OnInit {
 
-  public name: string;
-  public surname: string;
   public entries: number;
+  public timers: number;
 
   constructor(
-    private userService: UserService,
-    private entryHistory: HistoryService) { }
+    private entryHistory: HistoryService,
+    private timerHistory: TimerHistoryService) { }
 
   ngOnInit() {
   }
 
   ionViewWillEnter(): void{
     this.entries = this.entryHistory.journalLength;
+    this.timers = this.timerHistory.timerHistoryLength;
   }
 }

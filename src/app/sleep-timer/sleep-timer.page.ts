@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController, ModalController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { TimerHistoryService } from '../services/timer-history.service';
 import { TimerService } from '../services/timer.service';
@@ -26,7 +27,8 @@ export class SleepTimerPage implements OnInit {
 
   constructor(
     private TimerService: TimerService,
-    public timerHistory: TimerHistoryService) { }
+    public timerHistory: TimerHistoryService,
+    private alertCtrl: AlertController) { }
 
   ngOnInit() {
   }
@@ -67,5 +69,24 @@ export class SleepTimerPage implements OnInit {
     };
 
     this.timerHistory.add(data);
+  }
+
+  async onClear(){
+    //Create an alert
+    const alert = await this.alertCtrl.create({
+      header: "Deleting all Timers",
+      message: "Deleting your timers is a permanent action and cannot be undone",
+      buttons: [
+        {
+        text: 'No',
+        role: 'cancel'
+        },
+        {
+          text: 'Yes',
+          handler: () => this.timerHistory.clear()
+        }]
+    });
+    //Present the alert
+    await alert.present();
   }
 }

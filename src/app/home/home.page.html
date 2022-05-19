@@ -16,53 +16,23 @@
 
   <div 
   id="user-header" 
-  class="ion-padding"
-  [ngClass]="{ 'error': !name && !surname }">
+  class="ion-padding">
 
     <!-- User Details -->
     <div class="ion-text-center">
-      <!-- <h3 *ngIf="name || surname">{{ name }} {{ surname }}</h3> -->
-      <h3>Welcome! You have written {{ entries }} journal entries and have
-        used the sleep timer {{ timer }} times!</h3>
-      <!-- h3 *ngIf="!name && !surname"></h3> -->
+      <h3>Welcome!</h3>
     </div>
 
+    <ion-card>
+      <ion-card-header>
+        Journal Entries Written: {{ entries }}
+      </ion-card-header>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        Timer Entries Recorded: {{ timers }}
+      </ion-card-header>
+    </ion-card>
+
   </div>
-
-  <!-- User Inputs
-  <ion-list>
-
-    Name Entry
-    <ion-item>
-      <ion-label position="floating">
-        Name
-        <ion-text color="danger">*</ion-text>
-      </ion-label>
-
-      <ion-input
-      [(ngModel)]="name" 
-      clearInput></ion-input>
-    </ion-item> -->
-
-    <!-- Surname Entry
-    <ion-item>
-      <ion-label position="floating">
-        Surname
-        <ion-text color="danger">*</ion-text>
-      </ion-label>
-
-      <ion-input
-      [(ngModel)]="surname"  
-      clearInput></ion-input>
-    </ion-item>
-
-  </ion-list> -->
-
-  <!-- <ion-footer>
-    <ion-button 
-    class="ion-no-margin"
-    [disabled]="!name && !surname"
-    expand="full"
-    (click) = "saveCredentials()">Save Credentials</ion-button>
-  </ion-footer> -->
 </ion-content>

@@ -31,6 +31,18 @@ ion-grid{
     }
 }
 
+ion-button{
+    display: flex;
+}
+
+ion-card-title{
+    text-align: center;
+}
+
+#cardRed{
+    --background: #6c292e; 
+}
+
 #container {
     text-align: center;
     position: absolute;

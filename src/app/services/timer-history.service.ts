@@ -9,6 +9,8 @@ export class TimerHistoryService {
 
   private static readonly timeStorageKey = 'timerHistory';
 
+  private timerLength = 0;
+
   private timerHistory: HistoryTimer[] = [];
 
   constructor(private storage: StorageService) { this.init(); }
@@ -56,5 +58,10 @@ export class TimerHistoryService {
 
     //Returns an empty array if no data exists.
     this.timerHistory = await this.storage.get(TimerHistoryService.timeStorageKey) || [];
+  }
+
+  public get timerHistoryLength(): number
+  {
+    return this.timerLength = this.timerHistory.length;
   }
 }
