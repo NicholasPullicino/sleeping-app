@@ -22,15 +22,6 @@ ion-menu-button {
     color: var(--ion-color-primary);
 }
 
-ion-grid{
-    --ion-grid-column-padding: 50px;
-    --ion-grid-padding: 10px;
-
-    ion-col{
-        text-align: center;
-    }
-}
-
 ion-button{
     display: flex;
 }

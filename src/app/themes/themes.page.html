@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [class]="getColorName()">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Themes</ion-title>
@@ -23,13 +23,13 @@
   </ion-popover>
   
   <ion-card *ngFor="let theme of themes; let i = index" 
-  [class]="theme.class">
+  (click)="changeColor(1)" [class]="theme.class" [disabled]="disable">
     <ion-card-header>
       <ion-card-title> {{ theme.name }} </ion-card-title>
     </ion-card-header>
     <ion-card-content 
     *ngIf="journalHistory.journalLength < theme.journalNeed 
-    && timerHistory.timerHistoryLength < theme.timerNeed">
+    && timerHistory.timerHistoryLength <= theme.timerNeed">
       Entries Needed: <br>
       {{ theme.journalNeed }} journal entries <br>
       {{ theme.timerNeed }} timer entries

@@ -12,7 +12,9 @@ import { Color } from '../structs/color';
 })
 export class ThemesPage implements OnInit {
 
+private _colorChoice : number;
 public themes = THEMES;
+disable = true;
 
 constructor(
 	private alertCtrl: AlertController,
@@ -23,4 +25,18 @@ constructor(
 ngOnInit() {
 }
 
+changeColor(choice: number) {
+		this._colorChoice = choice;
+}
+
+getColorName() {
+		if (this._colorChoice == 1)
+			return "red";
+		else if (this._colorChoice == 2)
+			return "green";
+		else if (this._colorChoice == 3)
+			return "yellow";
+		
+		return "";
+	}
 }
