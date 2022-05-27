@@ -8,10 +8,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -34,10 +30,6 @@ const routes: Routes = [
   {
     path: 'journal-entry',
     loadChildren: () => import('./journal-entry/journal-entry.module').then( m => m.JournalEntryPageModule)
-  },
-  {
-    path: 'journal-view',
-    loadChildren: () => import('./journal-view/journal-view.module').then( m => m.JournalViewPageModule)
   },
 ];
 

@@ -1,37 +1,17 @@
-ion-content{
-    --background: #19133A;
-}
-
-ion-content.red{
+.themeRed{
     --background: #ac3766;    
 }
 
-ion-toolbar{
-    --background: #5A56CB;
+.themeBlue{
+    --background: #19133A;
 }
 
-ion-content.green{
+.themeGreen{
     --background: rgb(36, 112, 36);    
-}
-
-ion-content.yellow{
-    --background: rgb(196, 196, 31);    
-}
-
-ion-menu-button {
-    color: var(--ion-color-primary);
-}
-
-ion-button{
-    display: flex;
 }
 
 ion-card-title{
     text-align: center;
-}
-
-#cardRed{
-    --background: #6c292e; 
 }
 
 #container {

@@ -4,6 +4,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { JournalEntryPage } from '../journal-entry/journal-entry.page';
 import { HistoryService } from '../services/history.service';
 import { JournalService } from '../services/journal.service';
+import { ThemesService } from '../services/themes.service';
 import { HistoryItem } from '../structs/history';
 
 @Component({
@@ -19,7 +20,8 @@ export class JournalPage implements OnInit {
   constructor(
     public modalCtrl:ModalController,
     private alertCtrl: AlertController,
-    public entryHistory: HistoryService
+    public entryHistory: HistoryService,
+    public themeChange: ThemesService
     ) { }
 
   ngOnInit() {

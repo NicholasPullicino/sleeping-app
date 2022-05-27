@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button [disabled]="isRunning"></ion-menu-button>
     </ion-buttons>
@@ -7,19 +7,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Journal</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content [fullscreen]="true" color="tertiary">
   <ion-row class="ion-justify-content-center">
     <h1>{{ timer | time}}</h1>
   </ion-row>
 
   <!-- Today's Date -->
-  <ion-item lines="none">
+  <ion-item lines="none" color="secondary">
     <ion-label class="todayDate">Timer History</ion-label>
 
     <ion-buttons slot="end">
@@ -36,9 +30,10 @@
   </div>
 
   <!-- Entry Cards -->
-  <ion-card *ngFor="let timerEntry of timerHistory.getHistory(); let i = index">
+  <ion-card *ngFor="let timerEntry of timerHistory.getHistory(); let i = index"
+  color="secondary">
     <ion-card-header>
-      <ion-item>
+      <ion-item color="secondary">
         <ion-input readonly>{{ timerEntry.endTime | time }}</ion-input>
         <ion-input readonly>{{ timerEntry.timerDate | date:'dd MMM YYY'}}<br>
         {{ timerEntry.timerDate | date:'HH:mm:ss'}}</ion-input>
@@ -47,7 +42,7 @@
 
     <!-- Delete Button -->
     <ion-row>
-      <ion-item button (click)="timerHistory.removeEntry(i)">
+      <ion-item button (click)="timerHistory.removeEntry(i)" color="secondary">
         <ion-icon name="trash"></ion-icon>
         <p>Delete</p>
       </ion-item>
@@ -57,5 +52,5 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button expand="block" (click)="toggleTimer()">{{ isRunning ? 'Stop' : 'Start'}}</ion-button>
+  <ion-button expand="block" [color]="isRunning? 'danger' : 'success'" (click)="toggleTimer()">{{ isRunning ? 'Stop' : 'Start'}}</ion-button>
 </ion-footer>

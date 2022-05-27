@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { HistoryService } from '../services/history.service';
 import { JournalService } from '../services/journal.service';
+import { ThemesService } from '../services/themes.service';
 import { HistoryItem } from '../structs/history';
 
 @Component({
@@ -19,7 +20,8 @@ export class JournalEntryPage implements OnInit {
   entryObject
   constructor(public modalCtrl:ModalController, 
     private journalService: JournalService,
-    public entryHistory: HistoryService) { }
+    public entryHistory: HistoryService,
+    public themeChange: ThemesService) { }
 
   ngOnInit() {
   }

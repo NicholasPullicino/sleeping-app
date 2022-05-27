@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -7,17 +7,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Journal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" color="tertiary">
 
   <!-- Today's Date -->
-  <ion-item lines="none">
+  <ion-item lines="none" color="secondary">
     <ion-label class="todayDate">Today <p>{{today | date:'fullDate'}}</p></ion-label>
-
     <ion-buttons slot="end">
       <ion-button
       [disabled]="entryHistory.getHistory().length === 0" 
@@ -32,19 +26,20 @@
   </div>
 
   <!-- Entry Cards -->
-  <ion-card *ngFor="let entry of entryHistory.getHistory(); let i = index">
+  <ion-card *ngFor="let entry of entryHistory.getHistory(); let i = index"
+  color="secondary">
     <ion-card-header>
       <ion-card-subtitle>
         {{entry.entryTitle}} {{ entry.entryTime | date:'dd MMM YYYY, HH:mm'}}
       </ion-card-subtitle>
-      <ion-item>
+      <ion-item color="secondary">
         <ion-label>{{entry.entryContent}}</ion-label>
       </ion-item>
     </ion-card-header>
 
     <!-- Delete Button -->
     <ion-row>
-      <ion-item button (click)="entryHistory.removeEntry(i)">
+      <ion-item button (click)="entryHistory.removeEntry(i)" color="secondary">
         <ion-icon name="trash"></ion-icon>
         <p>Delete</p>
       </ion-item>
@@ -54,5 +49,5 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button (click)="addTask()" expand="full">New Entry</ion-button>
+  <ion-button (click)="addTask()" expand="full" color="success">New Entry</ion-button>
 </ion-footer>

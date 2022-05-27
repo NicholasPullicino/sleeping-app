@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { HistoryService } from '../services/history.service';
+import { ThemesService } from '../services/themes.service';
 import { TimerHistoryService } from '../services/timer-history.service';
 import { THEMES } from '../structs/color';
 import { Color } from '../structs/color';
@@ -12,31 +13,21 @@ import { Color } from '../structs/color';
 })
 export class ThemesPage implements OnInit {
 
-private _colorChoice : number;
 public themes = THEMES;
 disable = true;
 
 constructor(
 	private alertCtrl: AlertController,
 	public timerHistory: TimerHistoryService,
-	public journalHistory: HistoryService
+	public journalHistory: HistoryService,
+	public themeChange: ThemesService
 ) { }
 
 ngOnInit() {
 }
 
-changeColor(choice: number) {
-		this._colorChoice = choice;
+changeColor(choice: Color) {
+		this.themeChange.changeTheme(choice.name)
 }
 
-getColorName() {
-		if (this._colorChoice == 1)
-			return "red";
-		else if (this._colorChoice == 2)
-			return "green";
-		else if (this._colorChoice == 3)
-			return "yellow";
-		
-		return "";
-	}
 }

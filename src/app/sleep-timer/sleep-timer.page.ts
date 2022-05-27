@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { ThemesService } from '../services/themes.service';
 import { TimerHistoryService } from '../services/timer-history.service';
 import { TimerService } from '../services/timer.service';
 import { HistoryTimer } from '../structs/timer';
@@ -28,7 +29,8 @@ export class SleepTimerPage implements OnInit {
   constructor(
     private TimerService: TimerService,
     public timerHistory: TimerHistoryService,
-    private alertCtrl: AlertController) { }
+    private alertCtrl: AlertController,
+    public themeChange: ThemesService) { }
 
   ngOnInit() {
   }

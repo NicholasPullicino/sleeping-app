@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoryService } from '../services/history.service';
+import { ThemesService } from '../services/themes.service';
 import { TimerHistoryService } from '../services/timer-history.service';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,8 @@ export class HomePage implements OnInit {
 
   constructor(
     private entryHistory: HistoryService,
-    private timerHistory: TimerHistoryService) { }
+    private timerHistory: TimerHistoryService,
+    public themeChange: ThemesService) { }
 
   ngOnInit() {
   }
